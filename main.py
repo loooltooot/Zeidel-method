@@ -30,15 +30,13 @@ for i in range(0, amount_of_variebles):
             "Enter {} coefficient of {} eqution: ".format(j + 1, i + 1)))
 
 for i in range(20):
+    isBiggerThanInfelicity = False
     pre_x = copy.deepcopy(x)
     x = seidel(x, a, b)
 
-    pre_sum = 0
-    sum = 0
-
     for j in range(amount_of_variebles):
-        pre_sum += abs(pre_x[j])
-        sum += abs(x[j])
-    print(x)
-    if abs(sum - pre_sum) < (e * 3):
+        if abs(x[j] - pre_x[j]) > e:
+            isBiggerThanInfelicity = True
+    print("\nResult of {} iteration: {}".format(i + 1, x))
+    if isBiggerThanInfelicity is not True:
         break
